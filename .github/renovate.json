@@ -1,7 +1,15 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "dependencyDashboard": true,
-  "enabledManagers": ["dockerfile"],
+  "enabledManagers": ["dockerfile", "custom.regex"],
+  "customManagers": [
+    {
+      "customType": "regex",
+      "fileMatch": ["(^|/)Dockerfile$"],
+      "matchStrings": ["# renovate: datasource=(?<datasource>.*?) depName=(?<depName>.*?)\\nENV .*?_VERSION=(?<currentValue>.*)\\n"],
+      "versioningTemplate": "semver"
+    }
+  ],
   "packageRules": [
     {
       "description": "Disable major docker updates",
