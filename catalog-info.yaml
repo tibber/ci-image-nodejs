@@ -1,0 +1,10 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: ci-image-nodejs
+  annotations:
+    github.com/project-slug: tibber/ci-image-nodejs
+    circleci.com/project-slug: gh/tibber/ci-image-nodejs
+spec:
+  type: image
+  lifecycle: production
