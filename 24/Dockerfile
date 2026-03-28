@@ -1,4 +1,4 @@
-FROM cimg/node:24.13
+FROM cimg/node:24.14@sha256:714b33be00a0fb8aba79cf93f497f093f0394436a7ec68a7c757a11c7c10b63c
 
 RUN sudo apt-get update && \
     sudo apt-get -y install gettext-base && \
