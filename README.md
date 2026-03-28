@@ -6,6 +6,6 @@ List of image tags:
 
 | Tag |    Based on     |                              Description                              |
 | :-: | :-------------: | :-------------------------------------------------------------------: |
-| 24  | cimg/node:24.13 | Circle CI Node.js 24.13 image. Supports buildx used by `aws-ecr` orb. |
+| 24  | cimg/node:24.14 | Circle CI Node.js 24.14 image. Supports buildx used by `aws-ecr` orb. |
 
 # This image is built in Dockerhub
