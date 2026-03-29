@@ -12,11 +12,8 @@ RUN curl -sSL https://github.com/microsoft/kiota/releases/download/${KIOTA_VERSI
     sudo chmod +x /usr/local/bin/kiota && \
     rm -f kiota.zip
 
-# pnpm via Corepack: use default /usr/local/bin shims (installed as root).
-# `corepack enable --install-directory ~/bin` leaves root-owned /usr/local/bin/pnpm from the
-# base image; a later `corepack enable` in CI then hits EACCES on unlink (linux/amd64).
-RUN sudo rm -f /usr/local/bin/pnpm /usr/local/bin/pnpx /usr/local/bin/yarn /usr/local/bin/yarnpkg && \
-    sudo corepack enable && \
+# Install pnpm via Corepack (shims in ~/bin). Avoid a second plain `corepack enable` in CI jobs on linux/amd64.
+RUN corepack enable --install-directory ~/bin && \
     pnpm config set store-dir .pnpm-store
 
 # Bun — run TypeScript in CI without a separate compile step (optional for consumers).
