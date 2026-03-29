@@ -12,7 +12,7 @@ RUN curl -sSL https://github.com/microsoft/kiota/releases/download/${KIOTA_VERSI
     sudo chmod +x /usr/local/bin/kiota && \
     rm -f kiota.zip
 
-# Install pnpm via Corepack (shims in ~/bin). Avoid a second plain `corepack enable` in CI jobs on linux/amd64.
+# Install pnpm via corepack
 RUN corepack enable --install-directory ~/bin && \
     pnpm config set store-dir .pnpm-store
 
