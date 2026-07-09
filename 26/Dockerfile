@@ -6,7 +6,7 @@ RUN sudo apt-get update && \
 
 # Install kiota (default version; consumers can override by installing a different version in their CI step)
 # renovate: datasource=github-releases depName=microsoft/kiota
-ENV KIOTA_VERSION=v1.32.4
+ENV KIOTA_VERSION=v1.34.0
 RUN curl -sSL https://github.com/microsoft/kiota/releases/download/${KIOTA_VERSION}/linux-x64.zip -o kiota.zip && \
     sudo unzip -o kiota.zip -d /usr/local/bin && \
     sudo chmod +x /usr/local/bin/kiota && \
