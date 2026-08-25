@@ -29,6 +29,12 @@
       "matchDatasources": ["docker"],
       "matchUpdateTypes": ["digest"],
       "groupName": "docker-digests"
+    },
+    {
+      "description": "Bun tags its GitHub releases bun-vX.Y.Z, which the semver versioning cannot compare against BUN_VERSION, so no update was ever proposed. Strip the prefix. Scoped to bun because KIOTA_VERSION is already a bare vX.Y.Z tag and must not be rewritten.",
+      "matchDatasources": ["github-releases"],
+      "matchDepNames": ["oven-sh/bun"],
+      "extractVersion": "^bun-v(?<version>.+)$"
     }
   ]
 }
