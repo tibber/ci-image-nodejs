@@ -6,8 +6,8 @@ List of image tags:
 
 | Tag |    Based on     |                              Description                              |
 | :-: | :-------------: | :-------------------------------------------------------------------: |
-| 24  | cimg/node:24.14 | Node.js 24.14, pnpm (Corepack), **Bun**, Kiota, gettext-base. Supports buildx used by `aws-ecr` orb. |
-| 26  | cimg/node:26.4  | Node.js 26.4, pnpm/yarn (preinstalled — no Corepack), **Bun**, Kiota, gettext-base. Supports buildx used by `aws-ecr` orb. |
+| 24  | cimg/node:24.22 | Node.js 24.22, pnpm (Corepack), **Bun**, Kiota, gettext-base. Supports buildx used by `aws-ecr` orb. |
+| 26  | cimg/node:26.12 | Node.js 26.12, pnpm/yarn (preinstalled — no Corepack), **Bun**, Kiota, gettext-base. Supports buildx used by `aws-ecr` orb. |
 
 ## pnpm (Corepack) and Bun
 
