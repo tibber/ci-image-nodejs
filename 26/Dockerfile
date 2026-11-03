@@ -12,8 +12,12 @@ RUN curl -sSL https://github.com/microsoft/kiota/releases/download/${KIOTA_VERSI
     sudo chmod +x /usr/local/bin/kiota && \
     rm -f kiota.zip
 
-# pnpm ships preinstalled on this base image — Node.js 26 dropped Corepack, so it can no longer be enabled here
-RUN pnpm config set store-dir .pnpm-store
+# Node.js 26 dropped Corepack, so install it from npm; without it pnpm ignores the repo's packageManager pin
+# renovate: datasource=npm depName=corepack
+ENV COREPACK_VERSION=0.36.0
+RUN npm install --global --prefix ~ corepack@${COREPACK_VERSION} && \
+    corepack enable --install-directory ~/bin && \
+    pnpm config set store-dir .pnpm-store
 
 # Bun — run TypeScript in CI without a separate compile step (optional for consumers).
 # renovate: datasource=github-releases depName=oven-sh/bun

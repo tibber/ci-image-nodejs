@@ -7,7 +7,7 @@ List of image tags:
 | Tag |    Based on     |                              Description                              |
 | :-: | :-------------: | :-------------------------------------------------------------------: |
 | 24  | cimg/node:24.22 | Node.js 24.22, pnpm (Corepack), **Bun**, Kiota, gettext-base. Supports buildx used by `aws-ecr` orb. |
-| 26  | cimg/node:26.12 | Node.js 26.12, pnpm/yarn (preinstalled — no Corepack), **Bun**, Kiota, gettext-base. Supports buildx used by `aws-ecr` orb. |
+| 26  | cimg/node:26.12 | Node.js 26.12, pnpm (Corepack), **Bun**, Kiota, gettext-base. Supports buildx used by `aws-ecr` orb. |
 
 ## pnpm (Corepack) and Bun
 
@@ -17,8 +17,8 @@ Both tools are installed on **`PATH`** for the default **`circleci`** user (Circ
 
 - **How (tag 24):** **Corepack** is enabled with **`--install-directory ~/bin`** (i.e. **`/home/circleci/bin`** on this image).
 - **Why that directory:** Image layers run as **`circleci`**, not root. A plain **`corepack enable`** wants to write shims under **`/usr/local/bin`**, which is root-owned, so enabling Corepack for **`pnpm`**/`yarn` into **`~/bin`** avoids permission errors without relying on `sudo` in that step.
-- **How (tag 26+):** Node.js dropped Corepack from the runtime starting with v25, so `cimg/node:26.x` ships **`pnpm`** and **`yarn`** preinstalled globally under **`/usr/local/bin`** instead — there is no Corepack step to run.
-- **What you run:** **`pnpm`** / **`pnpx`** from the pruned monorepo as usual. On tag 24, version follows Corepack’s resolution (see `packageManager` in your repo); on tag 26+, version follows whatever `cimg/node` bundles.
+- **How (tag 26+):** Node.js dropped Corepack from the runtime starting with v25, so the image installs it from npm (pin is **`COREPACK_VERSION`**, Renovate: **`corepack`**) and enables it the same way. Its shims in **`~/bin`** come before the **`pnpm`**/**`yarn`** that `cimg/node:26.x` preinstalls under **`/usr/local/bin`**.
+- **What you run:** **`pnpm`** / **`pnpx`** from the pruned monorepo as usual. The version follows Corepack’s resolution (see `packageManager` in your repo).
 
 ### Bun — optional TypeScript / tooling runtime
 
