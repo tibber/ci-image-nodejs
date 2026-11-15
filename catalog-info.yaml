@@ -5,6 +5,7 @@ metadata:
   annotations:
     github.com/project-slug: tibber/ci-image-nodejs
     circleci.com/project-slug: gh/tibber/ci-image-nodejs
+    roadie.io/use-codeowners: "true"
 spec:
   type: image
   lifecycle: production
